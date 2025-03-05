@@ -9,7 +9,7 @@ from rerank.bce import RerankerModel
 
 # 配置文件示例（可用环境变量替代）
 class Config:
-    MODEL_PATH = os.getenv("LOCAL_MODEL_PATH", "/data/model/bce-onnx/bce-reranker-base_v1/")
+    MODEL_PATH = os.getenv("LOCAL_MODEL_PATH", "/data/model/jina-reranker-v2-base-multilingual/")
     USE_ONNX = os.getenv("USE_ONNX", "True") == "True"
     USE_CPU = os.getenv("USE_CPU", "False") == "True"
 
