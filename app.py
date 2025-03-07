@@ -5,6 +5,10 @@ import uvicorn
 import os
 from fastapi.middleware.cors import CORSMiddleware
 from rerank.bce import RerankerModel
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 # 配置文件示例（可用环境变量替代）
@@ -48,6 +52,7 @@ async def startup_event():
 
 @app.post("/rerank", response_model=RerankResponse)
 async def get_embeddings(request: RerankRequest):
+    logger.info(f"Received request: {request}")
     if rerank_agent is None:
         raise HTTPException(status_code=503, detail="Service not initialized")
     
